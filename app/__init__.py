@@ -1,7 +1,6 @@
 from flask import Flask, request
 from flask_babel import Babel
 from hashids import Hashids
-
 from .config import Config
 
 
