@@ -15,12 +15,21 @@ class Config(object):
     mysql_host = os.environ.get('MYSQL_HOST')
     mysql_port = os.environ.get('MYSQL_PORT')
 
+    HASHIDS_SALT = os.environ.get('HASHIDS_SALT')
+
     SQLALCHEMY_DATABASE_URI = f'mysql://{mysql_username}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_dbname}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    HASHIDS_SALT = os.environ.get('HASHIDS_SALT')
-
     LANGUAGES = ['en', 'ru', 'eu']
-
-    # Yandex Metrika counter
     YA_METRIC_COUNTER = os.environ.get('YA_METRIC_COUNTER')
+
+    SYNTAX = {
+        'text': 'Simple text',
+        'python': 'Python',
+        'r': 'R',
+        'java': 'Java',
+        'c_cpp': 'C/C++',
+        'javascript': 'Javascript',
+        'html': 'HTML',
+        'css': 'CSS'
+    }

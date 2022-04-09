@@ -3,10 +3,6 @@
 {% set body_id = 'index' %}
 {% set btn_share_style = 'btn-outline-success' %}
 
-{% set code_styles = ({'text':'Simple text', 'python': 'Python', 'r': 'R', 'java': 'Java', 
-                       'c_cpp': 'C/C++', 'javascript': 'Javascript', 'html': 'HTML', 'css': 'CSS'}) 
-%}
-
 {% block share %}
     <button type="button" class="btn btn-success btn-sm btn-new-share" id="btnShare" style="font-weight:500;">Create Share</button>
 {% endblock %}
@@ -17,7 +13,7 @@
     </div>
     <div class="col-md-2 col-sm-4 col-12 pt-3">
         <select class="form-select" id="styleSelector">
-            {% for key, value in code_styles.items() %}
+            {% for key, value in config['SYNTAX'].items() %}
                 {% if key == code_style %}
                     <option selected value="{{ key }}">{{ value }}</option>
                 {% else %}
