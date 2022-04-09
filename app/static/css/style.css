@@ -1,0 +1,131 @@
+body {
+    background: rgb(245 245 238);    
+}
+
+a {
+    color: #212529;
+}
+
+h1 {
+    font-size: 1.7rem;
+}
+
+.table > tbody > tr > td {
+    padding: 0 !important;
+}
+
+.container {
+  max-width: 1100px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+#editor {
+    width: 100%;
+    min-height: 450px;
+    display: block;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .02) !important;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#editor:focus-within {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+.fs-4 {
+    padding-left: 8px;
+    font-weight: 300;
+}
+
+.spinner-border {
+    color: rgba(0, 0, 0, 1) !important
+}
+
+.spinner-border {
+    border: .06em solid currentColor;
+    border-right-color: transparent;
+}
+
+.btn-link {
+    color: #212529;
+    text-decoration: none;
+    font-weight: 300 !important;
+}
+
+.btn-sm {
+    font-size: .9rem !important;
+}
+
+.btn-new-share {
+    padding: .42rem 1.15rem;
+    border-radius: 2rem;
+}
+
+.btn-close {
+    padding: 1.5rem 1rem !important;
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/0.8em auto no-repeat;
+}
+
+.alert {
+    margin-bottom: 0;
+}
+
+.alert-success {
+    background-color: #ebfbee;
+    border-color: #ebfbee;
+}
+
+.custom-badge {
+    font-weight: 250;
+    color: #6c757d;
+    font-size: .875em;
+}
+
+.custom-badge:not(:last-child):after {
+    content: '·';
+    margin-left: 5px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, .06) !important;
+}
+
+.form-control, .form-select {
+    border: 1px solid rgba(0, 0, 0, .02) !important;
+}
+
+.form-check {
+    margin-top: 0.5em;
+}
+
+.badge {
+    font-weight: 300;
+}
+
+.logo-title {
+    font-weight: 300 !important;
+    font-size: 1.3rem !important;
+}
+
+.likely_addon_for_copy:hover {
+    background: rgba(59, 187, 128, 0.2)
+}
+
+.footer-string {
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: #212529;
+}

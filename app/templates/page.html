@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% set body_id = 'page' %}
+{% set btn_share_style = 'btn-success' %}
+
+{% block extra %}
+    <meta name="robots" content="noindex">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename= 'css/likely.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename= 'js/likely.js') }}"></script>
+{% endblock %}
+
+{% block options %}
+    <div class="col-12 pt-1 pb-2">
+        {% if code_title|length > 0 %}
+            <h1 id="codeTitle" class="description">{{ code_title }}</h1>
+        {% endif %}
+    </div>
+    <div class="col-sm-8 col-12">
+        <span class="custom-badge">public</span>
+        <span class="custom-badge">{{ code_style }}</span>
+        <span class="custom-badge">6.62&nbsp;KB</span>
+        <span class="custom-badge">{{ code_views }}&nbsp;views</span>
+        <span class="custom-badge">{{ created_time }}</span>
+    </div>
+    <div class="col-sm-4 col-12 d-flex flex-row-reverse">
+        <a href="{{ url_for('index') }}{{ key }}?type=row" target="blank" class="btn-link" style="text-decoration:none; font-size:0.875em;" id="btnRow">row</a>
+        <a href="{{ url_for('index') }}clone?id={{ key }}" class="btn-link" style="text-decoration:none; margin-right:10px; font-size:0.875em;" id="btnClone">clone</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="col-12 pt-1">
+        <div id="editor">
+            <div id="editorLoader" class="text-center" style="padding-top:190px;">
+                <div class="text-secondary spinner-border" role="status"></div>
+            </div>
+        </div>
+    </div>
+    <div id="likelyBtns" class="col-12 pt-3" style="display:none;">
+        <div class="likely likely-big d-flex flex-row-reverse">
+            <div class="telegram"></div>
+            <div class="facebook"></div>
+            <div class="twitter"></div>
+            <div class="likely__widget likely_addon_for_copy" id="btnLikelyCopy">
+                <span class="likely__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 6.414V9a1 1 0 0 1-.907.996C6.922 10.574 4 13.496 4 19a1 1 0 0 1-2 0c0-6.295 3.43-9.996 10-10.892V4c0-.89 1.077-1.337 1.707-.707l8 8a1 1 0 0 1 0 1.414l-8 8c-.63.63-1.707.184-1.707-.707v-4H9a1 1 0 0 1 0-2h4a1 1 0 0 1 1 1v2.586L19.586 12 14 6.414z" fill="#198754" fill-rule="nonzero"/>
+                    </svg>
+                </span>
+                <span class="likely__button"></span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
