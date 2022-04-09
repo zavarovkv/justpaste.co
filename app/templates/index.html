@@ -12,10 +12,10 @@
 {% endblock %}
 
 {% block options %}
-    <div class="col-md-8 col-sm-12 col-12 pt-3">
+    <div class="col-md-10 col-sm-8 col-12 pt-3">
         <input type="text" class="form-control" id="codeTitle" placeholder="Enter title here..." maxlength="128" value="{{ code_title }}">
     </div>
-    <div class="col-md-2 col-sm-8 col-8 pt-3">
+    <div class="col-md-2 col-sm-4 col-12 pt-3">
         <select class="form-select" id="styleSelector">
             {% for key, value in code_styles.items() %}
                 {% if key == code_style %}
@@ -25,12 +25,6 @@
                 {% endif %}
             {% endfor %}
         </select>
-    </div>
-    <div class="col-md-2 col-sm-4 col-4 pt-3">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="privateSelector">
-          <label class="form-check-label" for="privateSelector">Private</label>
-        </div>
     </div>
 {% endblock %}
 
