@@ -21,3 +21,6 @@ class Config(object):
     HASHIDS_SALT = os.environ.get('HASHIDS_SALT')
 
     LANGUAGES = ['en', 'ru', 'eu']
+
+    # Yandex Metrika counter
+    YA_METRIC_COUNTER = os.environ.get('YA_METRIC_COUNTER')
