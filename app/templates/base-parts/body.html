@@ -1,0 +1,17 @@
+<div class="container py-3 pt-5">
+    <body>
+        <div class="row options">
+            {% block options %} {% endblock %}
+        </div>
+        <div class="row editor">
+            {% block body %} {% endblock %}
+        </div>
+        <div class="row btns">
+            <div class="col-12 pt-3">
+                <div class="d-flex flex-row-reverse">
+                    {% block share %} {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</div>

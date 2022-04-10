@@ -14,7 +14,7 @@ babel = Babel(app)
 db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
-hashids = Hashids(salt=app.config['HASHIDS_SALT'])
+hashids = Hashids(salt=app.config['HASHIDS_KEY'])
 
 
 @babel.localeselector

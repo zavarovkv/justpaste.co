@@ -1,11 +1,15 @@
 from app import app, hashids
 from flask import render_template, request, redirect, url_for, make_response
+
 from .texts import Texts
+from .forms import NewShareForm
 
 
 @app.route('/')
 def index():
-    return render_template('index.html', title=Texts.TITLE, description=Texts.DESCRIPTION)
+    form = NewShareForm(request.form)
+    response = render_template('index.html', title=Texts.TITLE, description=Texts.DESCRIPTION, form=form)
+    return response
 
 
 @app.route('/about')
@@ -14,6 +18,11 @@ def about():
 
 
 @app.errorhandler(404)
+def page_not_found(error):
+    return redirect(url_for('index'))
+
+
+@app.errorhandler(405)
 def page_not_found(error):
     return redirect(url_for('index'))
 

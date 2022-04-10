@@ -15,7 +15,8 @@ class Config(object):
     mysql_host = os.environ.get('MYSQL_HOST')
     mysql_port = os.environ.get('MYSQL_PORT')
 
-    HASHIDS_SALT = os.environ.get('HASHIDS_SALT')
+    HASHIDS_KEY = os.environ.get('HASHIDS_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
     SQLALCHEMY_DATABASE_URI = f'mysql://{mysql_username}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_dbname}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
