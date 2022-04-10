@@ -24,8 +24,8 @@ class Config(object):
     LANGUAGES = ['en', 'ru', 'eu']
     YA_METRIC_COUNTER = os.environ.get('YA_METRIC_COUNTER')
 
-    SYNTAX = {
-        'text': 'Simple text',
+    PROGRAM_LANGUAGES = {
+        'text': 'Plain text',
         'python': 'Python',
         'r': 'R',
         'java': 'Java',

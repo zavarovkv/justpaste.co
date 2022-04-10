@@ -5,9 +5,16 @@ from .texts import Texts
 from .forms import NewShareForm
 
 
-@app.route('/')
+@app.route('/', methods=('GET', 'POST'))
 def index():
     form = NewShareForm(request.form)
+
+    if form.validate_on_submit():
+        response = make_response(f'form.title.data: {form.title.data};\n'
+                                 f'form.languageSelector.data: {form.languageSelector.data}', 200)
+        response.mimetype = 'text/plain'
+        return response
+
     response = render_template('index.html', title=Texts.TITLE, description=Texts.DESCRIPTION, form=form)
     return response
 
@@ -18,11 +25,6 @@ def about():
 
 
 @app.errorhandler(404)
-def page_not_found(error):
-    return redirect(url_for('index'))
-
-
-@app.errorhandler(405)
 def page_not_found(error):
     return redirect(url_for('index'))
 

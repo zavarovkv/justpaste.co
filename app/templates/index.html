@@ -3,39 +3,24 @@
 {% set body_id = 'index' %}
 {% set btn_share_style = 'btn-outline-success' %}
 
-{% block share %}
-    <button type="button" class="btn btn-success btn-sm btn-new-share" id="btnShare" style="font-weight:500;">Create Share</button>
-{% endblock %}
-
-{% block options %}
-    <div class="col-md-10 col-sm-8 col-12 pt-3">
-        <input type="text" class="form-control form-control-lg" id="codeTitle" placeholder="Enter title here..." maxlength="128" value="{{ code_title }}">
-    </div>
-    <div class="col-md-2 col-sm-4 col-12 pt-3">
-        <select class="form-select form-select-lg" id="styleSelector">
-            {% for key, value in config['SYNTAX'].items() %}
-                {% if key == code_style %}
-                    <option selected value="{{ key }}">{{ value }}</option>
-                {% else %}
-                    <option value="{{ key }}">{{ value }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-    </div>
-{% endblock %}
-
 {% block body %}
-    <div class="col-12 pt-3">
-        <div id="editor">{{ code_body }}</div>
-    </div>
-
-    <form action="/share" method="post" role="form">
+    <form action="/" method="post" role="form">
         {{ form.csrf_token }}
-        <div class="col-md-10 col-sm-8 col-12 pt-3">
-            <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Enter title here..." maxlength="128" value="{{ code_title }}">
+        <div class="row">
+            <div class="col-md-10 col-sm-8 col-12 pt-3">
+                <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Enter title here..." maxlength="128" value="{{ code_title }}">
+            </div>
+            <div class="col-md-2 col-sm-4 col-12 pt-3">
+                {{ form.languageSelector(class_='form-select form-select-lg') }}
+            </div>
+            <div class="col-12 pt-3">
+                <div id="editor">{{ code_body }}</div>
+            </div>
+            <div class="col-12 pt-3">
+                <div class="d-flex flex-row-reverse">
+                    <button type="submit" class="btn btn-success btn-sm btn-new-share" id="btnShare" style="font-weight:500;">Create Share</button>
+                </div>
+            </div>
         </div>
-        {{ form.language.label }} {{ form.language(size=20) }}
-        <input type="submit" value="Go">
     </form>
-
 {% endblock %}
