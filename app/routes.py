@@ -1,17 +1,41 @@
 from app import app, hashids
 from flask import render_template, request, redirect, url_for, make_response
 
+from .config import Config
 from .texts import Texts
 from .forms import NewShareForm
 
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
+
     form = NewShareForm(request.form)
 
     if form.validate_on_submit():
-        response = make_response(f'form.title.data: {form.title.data};\n'
-                                 f'form.languageSelector.data: {form.languageSelector.data}', 200)
+
+        # get values from Form
+        title = form.title.data
+        lang = form.languageSelector.data
+        editor = form.editor.data
+
+        # are values correct?
+        if len(title) >= Config.TITLE_MAX_LEN:
+            pass
+
+        if lang not in Config.PROGRAM_LANGUAGES:
+            pass
+
+        if len(editor) > Config.EDITOR_MAX_LEN:
+            pass
+
+        # save data to the DB and get record ID
+        record_id = hashids.encode(101)
+
+        # return page
+
+        response = make_response(f'form.title.data: {title};\n'
+                                 f'form.languageSelector.data: {lang};\n'
+                                 f'form.editor.data: {editor}', 200)
         response.mimetype = 'text/plain'
         return response
 
@@ -45,14 +69,6 @@ def clone():
                            code_body='Body of the code',
                            code_style='python'
                            )
-
-
-@app.route('/create', methods=['POST'])
-def create():
-    # title= request.form['title']);
-    # body = request.form['body']);
-    # attributes = request.form['attributes'])
-    pass
 
 
 @app.route('/<string:key>')

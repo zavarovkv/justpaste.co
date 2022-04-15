@@ -8,13 +8,14 @@
         {{ form.csrf_token }}
         <div class="row">
             <div class="col-md-10 col-sm-8 col-12 pt-3">
-                <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Enter title here..." maxlength="128" value="{{ code_title }}">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title here..." maxlength="128" value="{{ code_title }}">
             </div>
             <div class="col-md-2 col-sm-4 col-12 pt-3">
-                {{ form.languageSelector(class_='form-select form-select-lg') }}
+                {{ form.languageSelector(class_='form-select') }}
             </div>
             <div class="col-12 pt-3">
                 <div id="editor">{{ code_body }}</div>
+                <textarea name="editor" style="display: none;"></textarea>
             </div>
             <div class="col-12 pt-3">
                 <div class="d-flex flex-row-reverse">

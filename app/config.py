@@ -34,3 +34,6 @@ class Config(object):
         'html': 'HTML',
         'css': 'CSS'
     }
+
+    TITLE_MAX_LEN = 128
+    EDITOR_MAX_LEN = 16000

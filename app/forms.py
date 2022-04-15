@@ -6,6 +6,6 @@ from .config import Config
 
 
 class NewShareForm(FlaskForm):
-    title = StringField('Title', validators=[Length(max=255)])
+    title = StringField('Title', validators=[Length(max=Config.TITLE_MAX_LEN)])
     languageSelector = SelectField('Programming Language', coerce=str, choices=list(Config.PROGRAM_LANGUAGES.items()))
-    # text = TextAreaField('Description', validators=[InputRequired(), Length(max=16000)])
+    editor = TextAreaField('Description', validators=[InputRequired(), Length(max=Config.EDITOR_MAX_LEN)])

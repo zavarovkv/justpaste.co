@@ -11,10 +11,9 @@ editorOptions = {
 
 
 if (document.body.id == 'page') {
-    var editorLoader = document.getElementById('editorLoader');
-    var likelyBtns = document.getElementById('likelyBtns');
-    var btnLikelyCopy = document.getElementById('btnLikelyCopy');
-    
+    const editorLoader = document.getElementById('editorLoader');
+    const likelyBtns = document.getElementById('likelyBtns');
+
     requestURL = '/1234567890123456789012345678901234567890?type=row'
     
     const xhr = new XMLHttpRequest();
@@ -33,31 +32,25 @@ if (document.body.id == 'page') {
         likelyBtns.style.display = 'block';
     };
     xhr.send();
-    
-    btnLikelyCopy.addEventListener('click', function() {
-        window.navigator.clipboard.writeText(window.location.href);
-    });
 }
 
 
 if (document.body.id == 'index') {
-    var editor = ace.edit('editor');
-    
+    const editor = ace.edit('editor');
+    const textarea = document.getElementsByName('editor')[0]
+
     editor.setOptions(editorOptions);
     editor.setReadOnly(false);
-    
-    var codeTitle = document.getElementById('codeTitle');
-    var codeBody = document.getElementById('editor');
-    var btnShare = document.getElementById('btnShare');
-    
-    var styleSelector = document.getElementById('styleSelector');
-    var privateSelector = document.getElementById('privateSelector');
-    
-    var styleValue = localStorage.getItem('attributeStyle')
-    var privateValue = localStorage.getItem('attributePrivate')
-    
+
+    const codeTitle = document.getElementById('codeTitle');
+    const btnShare = document.getElementById('btnShare');
+
+    const languageSelector = document.getElementById('languageSelector');
+
+    let styleValue = localStorage.getItem('attributeStyle');
+
     if (styleValue) {
-        styleSelector.value = styleValue
+        languageSelector.value = styleValue
         editor.session.setMode('ace/mode/' + styleValue);
         
         if (styleValue == 'text') {
@@ -65,16 +58,14 @@ if (document.body.id == 'index') {
         }
         
     } else {
-        styleSelector.value = 'text'
+        languageSelector.value = 'text'
         editor.session.setMode('ace/mode/text');
         editor.setOption('wrap', true)
     }
     
-    privateSelector.checked = privateValue;
     
-    
-    styleSelector.addEventListener('change', function() {
-        styleValue = styleSelector.value;
+    languageSelector.addEventListener('change', function() {
+        styleValue = languageSelector.value;
         
         if (styleValue == 'text') {
             editor.setOption('wrap', true)
@@ -95,7 +86,11 @@ if (document.body.id == 'index') {
         console.log('body: ' + code_body);
         console.log('style: ' + code_style);
     });
-    
+
+    editor.getSession().on('change', function () {
+        textarea.value = editor.getSession().getValue();
+    });
+
     window.onload = function() {
         codeTitle.focus();
     };
