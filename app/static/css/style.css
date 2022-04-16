@@ -27,7 +27,7 @@ h1 {
     min-height: 450px;
     display: block;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
@@ -133,22 +133,26 @@ h1 {
 .btn-outline-success {
     color: rgba(0,118,255,.9);
     border-color: rgba(0,118,255,.9);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.2),0 2px 10px 0 rgba(0,0,0,.1);
 }
 
 .btn-outline-success:hover {
     color: #fff;
     background-color: rgba(0,118,255,.9);
     border-color: rgba(0,118,255,.9);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,.2),0 4px 20px 0 rgba(0,0,0,.1);
 }
 
 .btn-success {
     color: #fff;
     border-color: rgba(0,118,255,.9);
     background-color: rgba(0,118,255,.9);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.2),0 2px 10px 0 rgba(0,0,0,.1);
 }
 
 .btn-success:hover {
     color: rgba(0,118,255,.9);;
     background-color: #fff;
     border-color: rgba(0,118,255,.9);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,.2),0 4px 20px 0 rgba(0,0,0,.1);
 }

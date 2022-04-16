@@ -1,7 +1,6 @@
 editorOptions = {
     highlightActiveLine: true,
     maxLines: Infinity,
-    placeholder: 'Enter text to share here...',
     fontSize: '1rem',
     theme: 'ace/theme/xcode',
     wrap: false,
@@ -42,7 +41,7 @@ if (document.body.id == 'index') {
     editor.setOptions(editorOptions);
     editor.setReadOnly(false);
 
-    const codeTitle = document.getElementById('codeTitle');
+    const title = document.getElementById('title');
     const btnShare = document.getElementById('btnShare');
 
     const languageSelector = document.getElementById('languageSelector');
@@ -92,6 +91,6 @@ if (document.body.id == 'index') {
     });
 
     window.onload = function() {
-        codeTitle.focus();
+        title.focus();
     };
 }

@@ -4,7 +4,7 @@
 {% set btn_share_style = 'btn-outline-success' %}
 
 {% block body %}
-    <form action="/" method="post" role="form">
+    <form action="/" method="post" role="form" class="needs-validation" novalidate>
         {{ form.csrf_token }}
         <div class="row">
             <div class="col-md-10 col-sm-8 col-12 pt-3">
