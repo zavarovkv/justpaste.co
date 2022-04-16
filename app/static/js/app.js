@@ -43,8 +43,8 @@ if (document.body.id == 'index') {
 
     const title = document.getElementById('title');
     const btnShare = document.getElementById('btnShare');
-
     const languageSelector = document.getElementById('languageSelector');
+    const form = document.getElementById('form');
 
     let styleValue = localStorage.getItem('attributeStyle');
 
@@ -93,4 +93,19 @@ if (document.body.id == 'index') {
     window.onload = function() {
         title.focus();
     };
+
+    form.addEventListener('submit', (event) => {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (title.value == '') {
+                title.focus();
+            } else if (editor.getSession().getValue() == '') {
+                editor.focus();
+            }
+
+        }
+        form.classList.add('was-validated');
+        }, false);
 }

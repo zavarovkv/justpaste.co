@@ -156,3 +156,17 @@ h1 {
     border-color: rgba(0,118,255,.9);
     box-shadow: 0 4px 10px 0 rgba(0,0,0,.2),0 4px 20px 0 rgba(0,0,0,.1);
 }
+
+.form-select {
+    cursor: pointer;,
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid,
+.form-select.is-valid:not([multiple]):not([size]),
+.form-select.is-valid:not([multiple])[size="1"],
+.was-validated .form-select:valid:not([multiple]):not([size]),
+.was-validated .form-select:valid:not([multiple])[size="1"],
+.form-control.is-valid, .was-validated .form-control:valid {
+    background-image: none;
+}
