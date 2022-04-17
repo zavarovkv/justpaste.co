@@ -12,7 +12,7 @@ editorOptions = {
 if (document.body.id == 'page') {
     const editorLoader = document.getElementById('editorLoader');
 
-    requestURL = '/1234567890123456789012345678901234567890?type=row'
+    requestURL = '/1234?type=row'
     
     const xhr = new XMLHttpRequest();
     xhr.open('GET', requestURL);

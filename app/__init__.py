@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_wtf.csrf import CSRFProtect
 from flask_babel import Babel
 from hashids import Hashids
 from flask_sqlalchemy import SQLAlchemy
@@ -12,6 +13,7 @@ app.config.from_object(Config)
 
 babel = Babel(app)
 db = SQLAlchemy(app)
+csrf = CSRFProtect(app)
 
 migrate = Migrate(app, db)
 hashids = Hashids(salt=app.config['HASHIDS_KEY'])
