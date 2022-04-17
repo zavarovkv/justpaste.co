@@ -179,3 +179,12 @@ h1 {
     border-color: #80bdff;
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
 }
+
+.err-msg {
+    display: table-cell;
+    height: 40px;
+    vertical-align: middle;
+    padding-right: 20px;
+    color: #f93154;
+    font-size: 0.9rem;
+}
