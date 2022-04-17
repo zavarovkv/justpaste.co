@@ -95,3 +95,8 @@ venv
 .env
 app/static/js/ace-min-1.4.14
 *.DS_Store
+
+# Chrome ext files
+/extensions/chrome.pem
+/extensions/chrome.crx
+/extensions/chrome.zip

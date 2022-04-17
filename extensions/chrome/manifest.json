@@ -1,0 +1,21 @@
+{
+  "name": "Easyshare",
+  "description": "EasyShare is an easy way to share your code, notes or ideas with friends and colleges. You dont need to sing up or anything like that.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "action": {
+
+  },
+  "icons": {
+    "16": "/images/easyshare16.png",
+    "32": "/images/easyshare32.png",
+    "48": "/images/easyshare48.png",
+    "128": "/images/easyshare128.png"
+  }
+}
