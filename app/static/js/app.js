@@ -1,7 +1,7 @@
 editorOptions = {
     highlightActiveLine: true,
     maxLines: Infinity,
-    fontSize: '1rem',
+    fontSize: '0.9rem',
     theme: 'ace/theme/xcode',
     wrap: false,
     indentedSoftWrap: false,
@@ -11,7 +11,6 @@ editorOptions = {
 
 if (document.body.id == 'page') {
     const editorLoader = document.getElementById('editorLoader');
-    const likelyBtns = document.getElementById('likelyBtns');
 
     requestURL = '/1234567890123456789012345678901234567890?type=row'
     
@@ -24,11 +23,9 @@ if (document.body.id == 'page') {
         }
         editorLoader.remove();
         
-        var editor = ace.edit('editor');
+        const editor = ace.edit('editor');
         editor.setReadOnly(true);
         editor.session.setValue(xhr.response);
-        
-        likelyBtns.style.display = 'block';
     };
     xhr.send();
 }
@@ -74,16 +71,6 @@ if (document.body.id == 'index') {
         
         editor.session.setMode('ace/mode/' + styleValue);
         localStorage.setItem('attributeStyle', styleValue);
-    });
-
-    btnShare.addEventListener('click', function() {
-        code_title = codeTitle.value;
-        code_body = editor.getSession().getValue();
-        code_style = styleSelector.value;
-        
-        console.log('title: ' + code_title)
-        console.log('body: ' + code_body);
-        console.log('style: ' + code_style);
     });
 
     editor.getSession().on('change', function () {
