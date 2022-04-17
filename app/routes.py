@@ -17,6 +17,11 @@ def index():
         title = form.title.data
         lang = form.languageSelector.data
         editor = form.editor.data
+        no_human = form.nh.data
+
+        # Is this request from a bot?
+        if no_human != '':
+            return redirect(url_for('index'))
 
         # are values correct?
         if len(title) >= Config.TITLE_MAX_LEN:

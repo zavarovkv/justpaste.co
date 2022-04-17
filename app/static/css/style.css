@@ -188,3 +188,7 @@ h1 {
     color: #f93154;
     font-size: 0.9rem;
 }
+
+.nh {
+    display: none;
+}
