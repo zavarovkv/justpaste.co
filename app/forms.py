@@ -11,7 +11,7 @@ class NewShareForm(FlaskForm):
         'Title',
         validators=[
             InputRequired(),
-            Length(max=Config.TITLE_MAX_LEN)
+            Length(max=Config.TITLE_MAX_LENGTH)
         ]
     )
     languageSelector = SelectField(
@@ -23,7 +23,7 @@ class NewShareForm(FlaskForm):
         'Description',
         validators=[
             InputRequired(),
-            Length(max=Config.EDITOR_MAX_LEN)
+            Length(max=Config.EDITOR_MAX_LENGTH)
         ]
     )
 
@@ -31,6 +31,6 @@ class NewShareForm(FlaskForm):
     nh = StringField(
         'No Human',
         validators=[
-            Length(max=Config.TITLE_MAX_LEN)
+            Length(max=Config.TITLE_MAX_LENGTH)
         ]
     )

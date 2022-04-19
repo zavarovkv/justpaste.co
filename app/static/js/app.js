@@ -10,24 +10,22 @@ editorOptions = {
 
 
 if (document.body.id == 'page') {
-    const editorLoader = document.getElementById('editorLoader');
+    const editorContainer = document.getElementById('editor');
+    const language = editorContainer.getAttribute('language')
 
-    requestURL = '/1234?type=row'
-    
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', requestURL);
-    
-    xhr.onload = () => {
-        if (xhr.status !== 200) {
-            return;
-        }
-        editorLoader.remove();
-        
-        const editor = ace.edit('editor');
-        editor.setReadOnly(true);
-        editor.session.setValue(xhr.response);
-    };
-    xhr.send();
+    const editor = ace.edit('editor');
+
+    editor.setOptions(editorOptions);
+    editor.setReadOnly(true);
+
+    editor.session.setMode('ace/mode/' + language);
+    editor.session.setUseWorker(false);
+
+    if (language == 'text') {
+        editor.setOption('wrap', true)
+    }
+
+    editorContainer.style.visibility = 'visible';
 }
 
 

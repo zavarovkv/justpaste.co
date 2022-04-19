@@ -9,30 +9,24 @@
 {% endblock %}
 
 {% block options %}
-    <div class="col-12 pt-1 pb-2">
-        {% if code_title|length > 0 %}
-            <h1 id="codeTitle" class="description">{{ code_title }}</h1>
+    <div class="col-12 pt-1 pb-3">
+        {% if title|length > 0 %}
+            <h1 id="codeTitle" class="description">{{ title }}</h1>
         {% endif %}
     </div>
     <div class="col-sm-8 col-12">
-        <span class="custom-badge">public</span>
-        <span class="custom-badge">{{ code_style }}</span>
-        <span class="custom-badge">6.62&nbsp;KB</span>
-        <span class="custom-badge">{{ code_views }}&nbsp;views</span>
-        <span class="custom-badge">{{ created_time }}</span>
+        <span class="custom-badge">{{ language }}</span>
+        <span class="custom-badge">{{ attr['size'] }}</span>
+        <span class="custom-badge">{{ attr['created_at'] }}</span>
     </div>
     <div class="col-sm-4 col-12 d-flex flex-row-reverse">
-        <a href="{{ url_for('index') }}{{ key }}?type=row" target="blank" class="btn-link" style="text-decoration:none; font-size:0.875em;" id="btnRow">row</a>
-        <a href="{{ url_for('index') }}clone?id={{ key }}" class="btn-link" style="text-decoration:none; margin-right:10px; font-size:0.875em;" id="btnClone">clone</a>
+        <a href="{{ url_for('index') }}{{ attr['key'] }}?type=row" target="blank" class="btn-link" style="text-decoration:none; font-size:0.875em;" id="btnRow">row</a>
+        <a href="{{ url_for('index') }}clone?id={{ attr['key'] }}" class="btn-link" style="text-decoration:none; margin-right:10px; font-size:0.875em;" id="btnClone">clone</a>
     </div>
 {% endblock %}
 
 {% block body %}
     <div class="col-12 pt-1">
-        <div id="editor">
-            <div id="editorLoader" class="text-center" style="padding-top:190px;">
-                <div class="text-secondary spinner-border" role="status"></div>
-            </div>
-        </div>
+        <div id="editor" class="editor" language="{{ language }}" style="visibility: hidden;">{{ content }}</div>
     </div>
 {% endblock %}

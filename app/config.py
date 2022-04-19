@@ -9,16 +9,16 @@ load_dotenv()
 class Config(object):
     DEBUG = True
 
-    mysql_username = os.environ.get('MYSQL_USERNAME')
-    mysql_password = os.environ.get('MYSQL_PASSWORD')
-    mysql_dbname = os.environ.get('MYSQL_DBNAME')
-    mysql_host = os.environ.get('MYSQL_HOST')
-    mysql_port = os.environ.get('MYSQL_PORT')
+    pg_username = os.environ.get('PG_USERNAME')
+    pg_password = os.environ.get('PG_PASSWORD')
+    pg_dbname = os.environ.get('PG_DBNAME')
+    pg_host = os.environ.get('PG_HOST')
+    pg_port = os.environ.get('PG_PORT')
 
     HASHIDS_KEY = os.environ.get('HASHIDS_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
-    SQLALCHEMY_DATABASE_URI = f'mysql://{mysql_username}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_dbname}'
+    SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{pg_username}:{pg_password}@{pg_host}:{pg_port}/{pg_dbname}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     LANGUAGES = ['en', 'ru', 'eu']
@@ -35,5 +35,5 @@ class Config(object):
         'css': 'CSS'
     }
 
-    TITLE_MAX_LEN = 128
-    EDITOR_MAX_LEN = 16000
+    TITLE_MAX_LENGTH = 128
+    EDITOR_MAX_LENGTH = 16000
