@@ -16,7 +16,6 @@ def index():
             'title': Texts.TITLE,
             'description': Texts.DESCRIPTION
         }
-
         attr = {
             'total_notes': db.session.query(Note).count()
         }
@@ -70,13 +69,15 @@ def page_not_found(error):
 
 @app.route('/clone', methods=['GET'])
 def clone():
-    key = request.args.get('id', '')
+    key = request.args.get('key', '')
 
-    if len(key) <= 0:
+    try:
+        note_id = hashids.decode(key)
+        note = db.session.query(Note).get(note_id)
+
+    except Exception as e:
         return redirect(url_for('index'))
 
-    # TODO:try get data by ID from DB
-    # TODO: if ok then
     return render_template('index.html',
                            title=Texts.TITLE,
                            description=Texts.DESCRIPTION,
