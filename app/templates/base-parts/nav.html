@@ -1,12 +1,21 @@
-<div class="container">
+<div>
     <nav class="navbar">
-        <div class="container-fluid" style="padding: 0;">
-            <a class="fs-4 logo-title text-dark text-decoration-none" href="{{ url_for('index') }}">easyshare</a>
-            <div class="d-flex">
-                <a href="{{ url_for('index') }}about" role="button" class="btn btn-link btn-sm text-nowrap" style="margin-left:10px; padding:.45rem .45rem;">About</a>
-                <a href="{{ url_for('index') }}" role="button" class="btn {{ btn_share_style }} btn-sm btn-new-share text-nowrap" style="margin-left:15px;">New&nbsp;Share</a>
+        <div class="container-fluid">
+            <div class="navbar-collapse">
+                <ul class="navbar-nav me-auto" style="float: left;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">New Note</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto" style="float: right; flex-direction: row;">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}about">Extensions</a>
+                    </li>
+                    <li class="nav-item" style="padding-left: 30px;">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}about">About</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 </div>
-<div class="border-bottom"></div>

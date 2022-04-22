@@ -4,6 +4,7 @@
 {% set btn_share_style = 'btn-outline-success' %}
 
 {% block body %}
+    <p style="margin-bottom: 0.5rem;">We've already shared <b style="font-weight: 600;">{{ attr['total_notes'] }}</b> notes. Your note is next one</p>
     <form action="/" method="post" role="form" id="form" novalidate>
         {{ form.csrf_token }}
         <div class="row">
@@ -22,7 +23,7 @@
             </div>
             <div class="col-12 pt-3">
                 <div class="d-flex flex-row-reverse">
-                    <button type="submit" class="btn btn-success btn-sm btn-new-share">Create&nbsp;Share</button>
+                    <button type="submit" class="btn btn-success btn-sm btn-new-share">Share&nbsp;Note</button>
                     <div id="editorError" style="visibility: hidden;">
                         <span class="err-msg">The length of the document is too large: <span id="editorCounter"></span> symbols</span>
                     </div>
