@@ -12,6 +12,7 @@ editorOptions = {
 if (document.body.id == 'page') {
     const editorContainer = document.getElementById('editor');
     const language = editorContainer.getAttribute('language')
+    const btnCopy = document.getElementById('btnCopy')
 
     const editor = ace.edit('editor');
 
@@ -26,6 +27,19 @@ if (document.body.id == 'page') {
     }
 
     editorContainer.style.visibility = 'visible';
+
+
+    // Save page to history in local storage
+
+    let history = localStorage.getItem('history');
+
+    btnCopy.addEventListener('click', (event) => {
+        const sel = editor.selection.toJSON();
+        editor.selectAll();
+        editor.focus();
+        document.execCommand('copy');
+        editor.selection.fromJSON(sel);
+    });
 }
 
 

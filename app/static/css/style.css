@@ -7,18 +7,20 @@ body {
     #background: rgb(245 245 238);
 }
 
-a {
+a, .fake-a {
     color: var(--primary-color);
     text-decoration: none;
+    cursor: pointer;
 }
 
-a:hover {
+a:hover, .fake-a:hover {
     color: var(--primary-color);
     text-decoration: underline;
 }
 
 h1 {
     font-size: 1.8rem;
+    word-break: break-all;
 }
 
 .container, .container-fluid {
