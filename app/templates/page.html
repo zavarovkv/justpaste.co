@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
-{% set body_id = 'page' %}
-{% set btn_share_style = 'btn-success' %}
+{% set activePage = 'page' %}
 
 {% block extra %}
     <meta name="robots" content="noindex">
@@ -22,6 +21,7 @@
     <div class="col-sm-4 col-12 d-flex flex-row-reverse">
         <a href="{{ url_for('index') }}{{ attr['key'] }}?type=row" target="blank" id="btnRow" style="margin-left: 10px;">row</a>
         <a href="{{ url_for('index') }}clone?key={{ attr['key'] }}" id="btnClone" style="margin-left: 10px;">clone</a>
+        <a href="" id="btnCopy" style="margin-left: 10px;">copy</a>
     </div>
 {% endblock %}
 

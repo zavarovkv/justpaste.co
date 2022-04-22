@@ -4,15 +4,18 @@
             <div class="navbar-collapse">
                 <ul class="navbar-nav me-auto" style="float: left;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">New Note</a>
+                        <a class="nav-link {% if activePage == 'index' %} active {% endif %}" aria-current="page" href="{{ url_for('index') }}">New Note</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto" style="float: right; flex-direction: row;">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}about">Extensions</a>
+                    <li class="nav-item d-none d-sm-block" style="padding-left: 25px;">
+                        <a class="nav-link {% if activePage == 'ext' %} active {% endif %}" aria-current="page" href="{{ url_for('index') }}ext">Extensions</a>
                     </li>
-                    <li class="nav-item" style="padding-left: 30px;">
-                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}about">About</a>
+                    <li class="nav-item" style="padding-left: 25px;">
+                        <a class="nav-link {% if activePage == 'history' %} active {% endif %}" aria-current="page" href="{{ url_for('index') }}history">History</a>
+                    </li>
+                    <li class="nav-item" style="padding-left: 25px;">
+                        <a class="nav-link {% if activePage == 'about' %} active {% endif %}" aria-current="page" href="{{ url_for('index') }}about">About</a>
                     </li>
                 </ul>
             </div>

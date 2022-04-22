@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
-{% set body_id = 'about' %}
-{% set btn_share_style = 'btn-success' %}
+{% set activePage = 'about' %}
 
 {% block options %}
     <div class="col-12 pt-3">
@@ -11,9 +10,9 @@
 
 {% block body%}
     <div class="col-md-6 col-12 pt-3 pb-5 mb-5">
-        <p><a href="{{ url_for('index') }}">EasyShare</a> is an easy way to share your code, notes or ideas with friends and colleges! You dont need to sing up or anything like that.</p>
-        <p>Just create a code or text, make a link and send it! You can also make it private.</p>
-        <p>Dont waste a time but share ideas ;)</p>
+        <p><a href="{{ url_for('index') }}">EasyShare</a> is an easy and absolutely free way to share your code, notes or ideas with friends and colleges! You dont need to sing up or anything like that.</p>
+        <p>Just create a code or text, make a link and send it. You can also make it private.</p>
+        <p>Dont waste a time but share ideas.</p>
     </div>
     <div class="col-md-6 col-12 pt-3">
         <p>{ img }</p>

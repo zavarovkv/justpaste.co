@@ -62,6 +62,32 @@ def about():
     return render_template('about.html', attr=attr, meta=meta)
 
 
+@app.route('/ext')
+def ext():
+    attr = {
+        'total_notes': db.session.query(Note).count(),
+    }
+    meta = {
+        'title': Texts.TITLE,
+        'description': Texts.DESCRIPTION
+    }
+
+    return render_template('ext.html', attr=attr, meta=meta)
+
+
+@app.route('/history')
+def history():
+    attr = {
+        'total_notes': db.session.query(Note).count(),
+    }
+    meta = {
+        'title': Texts.TITLE,
+        'description': Texts.DESCRIPTION
+    }
+
+    return render_template('history.html', attr=attr, meta=meta)
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return redirect(url_for('index'))
