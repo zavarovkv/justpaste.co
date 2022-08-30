@@ -7,7 +7,7 @@ jobs:
   docker-compose-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Deploy to Host
         uses: wshihadeh/docker-deployment-action@v1
         with:
@@ -16,7 +16,7 @@ jobs:
           ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
           deployment_mode: docker-compose
           copy_stack_file: true
-          deploy_path: /home/admin/easyshare.co
+          deploy_path: /home/admin/test
           stack_file_name: docker-compose.prod.yml
           keep_files: 5
           args: up -d --build
