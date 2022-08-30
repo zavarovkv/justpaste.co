@@ -17,7 +17,7 @@ jobs:
           deployment_mode: docker-compose
           copy_stack_file: true
           deploy_path: /home/admin/easyshare.co
-          stack_file_name: docker-compose.prod.yaml
+          stack_file_name: docker-compose.prod.yml
           keep_files: 5
           args: up -d
           docker_prune: 'false'
