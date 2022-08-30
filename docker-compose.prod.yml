@@ -31,8 +31,8 @@ services:
     env_file: .env
     volumes:
       - app:/app
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
+      - /home/admin/letsencrypt:/etc/letsencrypt
+      - /home/admin/letsencrypt:/var/lib/letsencrypt
     depends_on:
       - flask
     links:
@@ -48,8 +48,8 @@ services:
     container_name: certbot
     volumes:
       - app:/app
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
+      - /home/admin/letsencrypt:/etc/letsencrypt
+      - /home/admin/letsencrypt:/var/lib/letsencrypt
     depends_on:
       - nginx
     #command: certonly --webroot --webroot-path=/app --email zavarovkv2@yandex.ru --agree-tos --no-eff-email --force-renewal -d justpaste.co
@@ -59,8 +59,6 @@ services:
 
 volumes:
   app:
-  certbot-var:
-  certbot-etc:
 
 networks:
   my-network:
