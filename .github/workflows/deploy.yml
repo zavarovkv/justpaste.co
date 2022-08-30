@@ -7,6 +7,8 @@ jobs:
   docker-compose-build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - run: git pull origin master
       - name: Deploy to Host
         uses: wshihadeh/docker-deployment-action@v1
         with:
