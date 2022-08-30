@@ -9,3 +9,4 @@ WTForms~=3.0.1
 
 # export ARCHFLAGS="-arch x86_64"
 psycopg2
+gunicorn

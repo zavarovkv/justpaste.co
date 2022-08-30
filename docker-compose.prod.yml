@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+
+  flask:
+    build:
+      context: .
+      dockerfile: ./docker/flask/Dockerfile
+    command: gunicorn --bind 0.0.0.0:5000 wsgi:app
+    container_name: flask
+    restart: always
+    volumes:
+      - ./app:/app
+    ports:
+      - 5000:5000
+    env_file: .env
+    network_mode: "bridge"
+    networks:
+      - my-network
+
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+      args:
+        - project_env=prod
+    container_name: nginx
+    restart: always
+    network_mode: "bridge"
+    env_file: .env
+    volumes:
+      - app:/app
+    depends_on:
+      - flask
+    links:
+      - flask
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - my-network
+
+
+volumes:
+  app:
+
+networks:
+  my-network:
