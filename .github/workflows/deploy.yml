@@ -16,7 +16,7 @@ jobs:
           ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
           deployment_mode: docker-compose
           copy_stack_file: true
-          deploy_path: /home/admin/test
+          deploy_path: /home/admin/easyshare.co
           stack_file_name: docker-compose.prod.yml
           keep_files: 5
           args: up -d --build
