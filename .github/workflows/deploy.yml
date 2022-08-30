@@ -7,19 +7,14 @@ jobs:
   docker-compose-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: git pull origin master
-      - name: Deploy to Host
-        uses: wshihadeh/docker-deployment-action@v1
+      - name: build
+        uses: appleboy/ssh-action@master
         with:
-          remote_docker_host: admin@justpaste.co
-          ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
-          ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
-          deployment_mode: docker-compose
-          copy_stack_file: true
-          deploy_path: /home/admin/easyshare.co
-          stack_file_name: docker-compose.prod.yml
-          keep_files: 5
-          args: up -d --build
-          docker_prune: 'false'
-          pull_images_first: 'false'
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ${{ secrets.DIRECTORY }}
+            git pull origin master
+            docker-compose -f docker-compose.prod.yml up --build -d
