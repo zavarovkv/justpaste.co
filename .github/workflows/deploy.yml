@@ -1,0 +1,24 @@
+name: CI/CD Workflow
+on:
+  push:
+    branches:
+          - master
+jobs:
+  docker-compose-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Host
+        uses: wshihadeh/docker-deployment-action@v1
+        with:
+          remote_docker_host: admin@justpaste.co
+          ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
+          ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
+          deployment_mode: docker-compose
+          copy_stack_file: true
+          deploy_path: /home/admin/easyshare.co
+          stack_file_name: docker-compose.prod.yaml
+          keep_files: 5
+          args: up -d
+          docker_prune: 'false'
+          pull_images_first: 'false'
