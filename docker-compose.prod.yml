@@ -52,9 +52,7 @@ services:
       - /home/admin/letsencrypt:/var/lib/letsencrypt
     depends_on:
       - nginx
-    command: certonly --webroot --webroot-path=/app --email zavarovkv2@yandex.ru --agree-tos --no-eff-email --force-renewal -d justpaste.co
-    # command: certonly --webroot --webroot-path=/app --email zavarovkv2@yandex.ru --agree-tos --no-eff-email --staging -d justpaste.co
-    #command: certonly --webroot --webroot-path=/app --email zavarovkv2@yandex.ru --agree-tos --no-eff-email --dry-run -d justpaste.co
+    command: certonly --webroot --webroot-path=/app --email ${EMAIL} --agree-tos --no-eff-email --force-renewal -d ${DOMAIN}
 
 
 volumes:
