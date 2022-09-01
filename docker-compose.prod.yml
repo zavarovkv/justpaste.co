@@ -29,7 +29,7 @@ services:
     network_mode: "bridge"
     env_file: .env
     volumes:
-      - app:/app
+      - ./app:/app
       - /home/admin/letsencrypt:/etc/letsencrypt
       - /home/admin/letsencrypt:/var/lib/letsencrypt
     depends_on:
@@ -46,7 +46,7 @@ services:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - app:/app
+      - ./app:/app
       - /home/admin/letsencrypt:/etc/letsencrypt
       - /home/admin/letsencrypt:/var/lib/letsencrypt
     depends_on:
