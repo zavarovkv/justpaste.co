@@ -32,7 +32,8 @@ class Config(object):
         'c_cpp': 'C/C++',
         'javascript': 'Javascript',
         'html': 'HTML',
-        'css': 'CSS'
+        'css': 'CSS',
+        'sql': 'SQL'
     }
 
     TITLE_MAX_LENGTH = 128
