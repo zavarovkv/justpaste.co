@@ -11,15 +11,10 @@ services:
       - postgres:/var/lib/postgresql/data/pgdata
     env_file: .env
     restart: always
-    network_mode: "bridge"
     ports:
       - 5432:5432
     networks:
       - my-network
-    environment:
-      POSTGRES_DB: "easyshare"
-      POSTGRES_USER: "easyshare"
-      POSTGRES_PASSWORD: "ssdfdsf3erEWFD"
 
   flask:
     build:
@@ -35,7 +30,6 @@ services:
     env_file: .env
     depends_on:
       - db
-    network_mode: "bridge"
     links:
       - db
     networks:
@@ -49,7 +43,8 @@ services:
         - project_env=dev
     container_name: nginx
     restart: always
-    network_mode: "bridge"
+    volumes:
+      - ./app:/app
     env_file: .env
     depends_on:
       - flask
