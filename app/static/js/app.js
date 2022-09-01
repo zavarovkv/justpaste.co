@@ -18,6 +18,11 @@ if (document.body.id == 'page') {
 
     editor.setOptions(editorOptions);
     editor.setReadOnly(true);
+    editor.setHighlightActiveLine(false);
+    editor.setHighlightGutterLine(false);
+
+    // Remove cursor
+    editor.renderer.$cursorLayer.element.style.display = 'none'
 
     editor.session.setMode('ace/mode/' + language);
     editor.session.setUseWorker(false);
