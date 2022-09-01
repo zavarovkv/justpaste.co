@@ -9,11 +9,11 @@ load_dotenv()
 class Config(object):
     DEBUG = True
 
-    pg_username = os.environ.get('PG_USERNAME')
-    pg_password = os.environ.get('PG_PASSWORD')
-    pg_dbname = os.environ.get('PG_DBNAME')
-    pg_host = os.environ.get('PG_HOST')
-    pg_port = os.environ.get('PG_PORT')
+    pg_username = os.environ.get('POSTGRES_USER')
+    pg_password = os.environ.get('POSTGRES_PASSWORD')
+    pg_dbname = os.environ.get('POSTGRES_DB')
+    pg_host = os.environ.get('POSTGRES_HOST')
+    pg_port = os.environ.get('POSTGRES_PORT')
 
     HASHIDS_KEY = os.environ.get('HASHIDS_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
