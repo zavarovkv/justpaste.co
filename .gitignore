@@ -100,3 +100,4 @@ venv
 /extensions/chrome.crx
 /extensions/chrome.zip
 stacks
+/.prod.env
