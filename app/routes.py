@@ -31,16 +31,17 @@ def index():
     title = form.title.data
     content = form.editor.data
     language = form.languageSelector.data
+    is_public = True if form.privacySelector.data == 'public' else False
 
     # Check submitted values for success conditions
     if len(title) > Config.TITLE_MAX_LENGTH or \
-            language not in Config.PROGRAM_LANGUAGES or \
-            len(content) > Config.EDITOR_MAX_LENGTH:
+       language not in Config.PROGRAM_LANGUAGES or \
+       len(content) > Config.EDITOR_MAX_LENGTH:
 
         return redirect(url_for('index'))
 
     # Save new note to the DB
-    note = Note(title, content, language, size=len(content))
+    note = Note(title, content, language, len(content), is_public)
     db.session.add(note)
     db.session.flush()
     key = hashids.encode(note.id)
@@ -79,9 +80,11 @@ def ext():
 def history():
 
     # Get last notes from DB
-    limit = Config.HISTORY_NOTES_LIMIT
     columns = [Note.id, Note.created_at, Note.title, Note.language]
-    response = db.session.query(Note).with_entities(*columns).order_by(Note.created_at.desc()).limit(limit).all()
+    response = db.session.query(Note) \
+        .with_entities(*columns) \
+        .filter(Note.privacy.is_(True)) \
+        .order_by(Note.created_at.desc()).limit(Config.HISTORY_NOTES_LIMIT).all()
 
     # Convert to human format
     title_length_limit = Config.HISTORY_NOTES_TITLE_LIMIT

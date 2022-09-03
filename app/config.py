@@ -38,8 +38,7 @@ class Config(object):
 
     PRIVACY_VARIANTS = {
         'public': 'Public',
-        'notPublic': 'Not Public',
-        'burnAfterREad': 'Burn After Read'
+        'notPublic': 'Not Public'
     }
 
     TITLE_MAX_LENGTH = 128
