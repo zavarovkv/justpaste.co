@@ -36,6 +36,12 @@ class Config(object):
         'sql': 'SQL'
     }
 
+    PRIVACY_VARIANTS = {
+        'public': 'Public',
+        'notPublic': 'Not Public',
+        'burnAfterREad': 'Burn After Read'
+    }
+
     TITLE_MAX_LENGTH = 128
     EDITOR_MAX_LENGTH = 16000
 

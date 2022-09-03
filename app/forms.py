@@ -19,6 +19,11 @@ class NewShareForm(FlaskForm):
         coerce=str,
         choices=list(Config.PROGRAM_LANGUAGES.items())
     )
+    privacySelector = SelectField(
+        'Privacy',
+        coerce=str,
+        choices=list(Config.PRIVACY_VARIANTS.items())
+    )
     editor = TextAreaField(
         'Description',
         validators=[

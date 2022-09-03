@@ -5,7 +5,8 @@ editorOptions = {
     theme: 'ace/theme/xcode',
     wrap: false,
     indentedSoftWrap: false,
-    behavioursEnabled: false
+    behavioursEnabled: false,
+    showPrintMargin: false
 };
 
 
