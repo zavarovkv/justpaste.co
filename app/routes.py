@@ -123,6 +123,8 @@ def clone():
         return redirect(url_for('index'))
 
     form = NewShareForm(request.form)
+    form.languageSelector.default = note.language
+    form.process()
 
     meta = {
         'title': Texts.TITLE,
@@ -132,9 +134,7 @@ def clone():
     attr = {
         'total_notes': db.session.query(Note).count(),
         'title': f'Cloned from // {note.title}',
-        'content': note.content,
-        'language': note.language,
-        'privacy': note.privacy
+        'content': note.content
     }
 
     return render_template('index.html', form=form, attr=attr, meta=meta)

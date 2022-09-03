@@ -65,28 +65,37 @@ if (document.body.id == 'index') {
     const MAX_LENGTH = 16000;
     let currentLength = 0;
 
-
     const title = document.getElementById('title');
     const languageSelector = document.getElementById('languageSelector');
     const form = document.getElementById('form');
 
-    // Initialise data from localstorage
-    let styleValue = localStorage.getItem('attributeStyle');
+    // Check this is /index or /clone page
+    const paramsString = document.location.pathname;
+    const searchParams = new URLSearchParams(paramsString);
+    let isClonePage = searchParams.get('/clone');
 
-    if (styleValue) {
-        languageSelector.value = styleValue
-        editor.session.setMode('ace/mode/' + styleValue);
 
-        // Text wrap only for plane text style
-        if (styleValue == 'text') {
+    // For /clone page doesn't load values from local storage
+    if (isClonePage == null) {
+
+        // Initialise data from localstorage
+        let styleValue = localStorage.getItem('attributeStyle');
+
+        if (styleValue) {
+            languageSelector.value = styleValue
+            editor.session.setMode('ace/mode/' + styleValue);
+
+            // Text wrap only for plane text style
+            if (styleValue == 'text') {
+                editor.setOption('wrap', true)
+            }
+
+        } else {
+            // Plane text as default style
+            languageSelector.value = 'text'
+            editor.session.setMode('ace/mode/text');
             editor.setOption('wrap', true)
         }
-        
-    } else {
-        // Plane text as default style
-        languageSelector.value = 'text'
-        editor.session.setMode('ace/mode/text');
-        editor.setOption('wrap', true)
     }
     
     window.onload = function() {
