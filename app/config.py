@@ -47,4 +47,4 @@ class Config(object):
     HISTORY_NOTES_LIMIT = 20
     HISTORY_NOTES_TITLE_LIMIT = 70
 
-    GENERAL_DATE_FORMAT = '%d %B %Y, %H:%M'
+    GENERAL_DATE_FORMAT = '%d %b %Y, %H:%M'
