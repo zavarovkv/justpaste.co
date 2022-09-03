@@ -9,10 +9,21 @@
 {% endblock %}
 
 {% block body%}
-    <div class="col-md-6 col-12 pt-3 pb-5 mb-5">
-        <p></p>
+    <div class="col-md-8 col-12 pt-3 pb-5 mb-5">
+        <p>This page contains the most recently created <span style="font-weight: 600;">'public'</span> notes.</p>
+        <p>
+            <ul>
+                {% for note in attr['last_notes'] %}
+                    <li>
+                        <a href="/{{ note.id }}">{{ note.title }}</a>
+                        <span class="custom-badge">{{ note.created_at }}</span>
+                        <span class="custom-badge">{{ note.language }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </p>
     </div>
-    <div class="col-md-6 col-12 pt-3">
+    <div class="col-md-4 col-12 pt-3">
         <p>{ img }</p>
     </div>
 {% endblock %}

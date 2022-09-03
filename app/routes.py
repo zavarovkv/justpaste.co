@@ -1,3 +1,5 @@
+import datetime
+
 from app import app, hashids, db
 from flask import render_template, request, redirect, url_for, make_response
 
@@ -52,7 +54,7 @@ def index():
 @app.route('/about')
 def about():
     attr = {
-        'total_notes': db.session.query(Note).count(),
+        'total_notes': db.session.query(Note).count()
     }
     meta = {
         'title': Texts.TITLE,
@@ -65,7 +67,7 @@ def about():
 @app.route('/ext')
 def ext():
     attr = {
-        'total_notes': db.session.query(Note).count(),
+        'total_notes': db.session.query(Note).count()
     }
     meta = {
         'title': Texts.TITLE,
@@ -77,8 +79,23 @@ def ext():
 
 @app.route('/history')
 def history():
+
+    # Get last notes from DB
+    limit = Config.HISTORY_NOTES_LIMIT
+    columns = [Note.id, Note.created_at, Note.title, Note.language]
+    response = db.session.query(Note).with_entities(*columns).order_by(Note.created_at).limit(limit).all()
+
+    # Convert to human format
+    title_length_limit = Config.HISTORY_NOTES_TITLE_LIMIT
+    last_notes = [{'id': hashids.encode(id),
+                   'created_at': created_at.strftime(Config.GENERAL_DATE_FORMAT),
+                   'title': title if len(title) <= title_length_limit else f'{title[:title_length_limit]}...',
+                   'language': language
+                   } for (id, created_at, title, language) in response]
+
     attr = {
         'total_notes': db.session.query(Note).count(),
+        'last_notes': last_notes
     }
     meta = {
         'title': Texts.TITLE,
@@ -141,7 +158,7 @@ def page(key: str):
         s_size = f'{size} B' if size < 100 else f'{(size/1000):.2f} KB'
 
         created_at = note.created_at
-        s_create_at = created_at.strftime("%d %B %Y, %H:%M:%S")
+        s_create_at = created_at.strftime(Config.GENERAL_DATE_FORMAT)
 
         attr = {
             'key': key,

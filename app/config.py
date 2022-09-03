@@ -38,3 +38,8 @@ class Config(object):
 
     TITLE_MAX_LENGTH = 128
     EDITOR_MAX_LENGTH = 16000
+
+    HISTORY_NOTES_LIMIT = 20
+    HISTORY_NOTES_TITLE_LIMIT = 70
+
+    GENERAL_DATE_FORMAT = '%d %B %Y, %H:%M'
