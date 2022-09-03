@@ -8,7 +8,7 @@
         {{ form.csrf_token }}
         <div class="row">
             <div class="col-md-8 col-sm-12 col-12 pt-3">
-                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title here..." maxlength="128" value="{{ code_title }}" required>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title here..." maxlength="128" value="{{ attr['title']  }}" required>
             </div>
             <div class="col-md-2 col-sm-6 col-6 pt-3">
                 {{ form.languageSelector(class_='form-select') }}
@@ -17,8 +17,8 @@
                 {{ form.privacySelector(class_='form-select') }}
             </div>
             <div class="col-12 pt-3">
-                <div id="editor" class="editor editor-can-write">{{ code_body }}</div>
-                <textarea name="editor" style="display: none;" required></textarea>
+                <div id="editor" class="editor editor-can-write">{{ attr['content'] }}</div>
+                <textarea name="editor" style="display: none;" required>{{ attr['content'] }}</textarea>
             </div>
             <div class="col-12 nh">
                 {{ form.nh }}

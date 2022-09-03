@@ -122,13 +122,22 @@ def clone():
     except Exception as e:
         return redirect(url_for('index'))
 
-    return render_template('index.html',
-                           title=Texts.TITLE,
-                           description=Texts.DESCRIPTION,
-                           code_title='Title of the code',
-                           code_body='Body of the code',
-                           code_style='python'
-                           )
+    form = NewShareForm(request.form)
+
+    meta = {
+        'title': Texts.TITLE,
+        'description': Texts.DESCRIPTION
+    }
+
+    attr = {
+        'total_notes': db.session.query(Note).count(),
+        'title': f'Cloned from // {note.title}',
+        'content': note.content,
+        'language': note.language,
+        'privacy': note.privacy
+    }
+
+    return render_template('index.html', form=form, attr=attr, meta=meta)
 
 
 @app.route('/<string:key>')
