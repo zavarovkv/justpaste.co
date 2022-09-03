@@ -1,5 +1,3 @@
-import datetime
-
 from app import app, hashids, db
 from flask import render_template, request, redirect, url_for, make_response
 
@@ -83,7 +81,7 @@ def history():
     # Get last notes from DB
     limit = Config.HISTORY_NOTES_LIMIT
     columns = [Note.id, Note.created_at, Note.title, Note.language]
-    response = db.session.query(Note).with_entities(*columns).order_by(Note.created_at).limit(limit).all()
+    response = db.session.query(Note).with_entities(*columns).order_by(Note.created_at.desc()).limit(limit).all()
 
     # Convert to human format
     title_length_limit = Config.HISTORY_NOTES_TITLE_LIMIT
