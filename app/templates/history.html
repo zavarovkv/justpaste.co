@@ -16,8 +16,8 @@
                 {% for note in attr['last_notes'] %}
                     <li>
                         <a href="/{{ note.id }}">{{ note.title }}</a>
-                        <span class="custom-badge">{{ note.created_at }}</span>
-                        <span class="custom-badge">{{ note.language }}</span>
+                        <span class="custom-badge" style="margin-left: 10px; font-weight: 250; font-size: .75em;">{{ note.created_at }}</span>
+                        <span class="custom-badge" style="font-weight: 250; font-size: .75em;">{{ note.language }}</span>
                     </li>
                 {% endfor %}
             </ul>
