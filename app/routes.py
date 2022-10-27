@@ -91,7 +91,7 @@ def history():
     last_notes = [{'id': hashids.encode(id),
                    'created_at': created_at.strftime(Config.GENERAL_DATE_FORMAT),
                    'title': title if len(title) <= title_length_limit else f'{title[:title_length_limit]}...',
-                   'language': language
+                   'language': Config.PROGRAM_LANGUAGES[language],
                    } for (id, created_at, title, language) in response]
 
     attr = {
@@ -182,6 +182,6 @@ def page(key: str):
             'description': Texts.DESCRIPTION
         }
 
-        return render_template('page.html', title=title, content=content, language=language, attr=attr, meta=meta)
+        return render_template('page.html', title=title, content=content, language=Config.PROGRAM_LANGUAGES[language], attr=attr, meta=meta)
 
     return redirect(url_for('index'))

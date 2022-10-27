@@ -99,7 +99,8 @@ ul {
 
 .custom-badge {
     color: var(--secondory-color);
-    font-size: .875em;
+    font-weight: 250;
+    font-size: .75em;
 }
 
 .custom-badge:not(:last-child):after {

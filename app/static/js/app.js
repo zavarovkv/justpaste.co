@@ -96,6 +96,15 @@ if (document.body.id == 'index') {
             editor.session.setMode('ace/mode/text');
             editor.setOption('wrap', true)
         }
+    } else {
+        // if page is /Clone
+        styleValue = languageSelector.value
+        editor.session.setMode('ace/mode/' + styleValue);
+
+        // Text wrap only for plane text style
+        if (styleValue == 'text') {
+            editor.setOption('wrap', true)
+        }
     }
     
     window.onload = function() {
