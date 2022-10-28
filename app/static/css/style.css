@@ -183,3 +183,8 @@ ul {
 .nh {
     display: none;
 }
+
+.img-fluid {
+    max-width: 450px !important;
+    width: 100% !important;
+}
