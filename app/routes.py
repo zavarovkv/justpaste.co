@@ -31,6 +31,9 @@ def index():
     title = form.title.data
     content = form.editor.data
     language = form.languageSelector.data
+
+    # app.logger.info(form.languageSelector.data)
+
     is_public = True if form.privacySelector.data == 'public' else False
 
     # Check submitted values for success conditions
@@ -182,6 +185,12 @@ def page(key: str):
             'description': Texts.DESCRIPTION
         }
 
-        return render_template('page.html', title=title, content=content, language=Config.PROGRAM_LANGUAGES[language], attr=attr, meta=meta)
+        return render_template('page.html',
+                               title=title,
+                               content=content,
+                               language_view=Config.PROGRAM_LANGUAGES[language],
+                               language=language,
+                               attr=attr,
+                               meta=meta)
 
     return redirect(url_for('index'))

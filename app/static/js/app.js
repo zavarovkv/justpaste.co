@@ -34,9 +34,7 @@ if (document.body.id == 'page') {
 
     editorContainer.style.visibility = 'visible';
 
-
     // Save page to history in local storage
-
     let history = localStorage.getItem('history');
 
     btnCopy.addEventListener('click', (event) => {
