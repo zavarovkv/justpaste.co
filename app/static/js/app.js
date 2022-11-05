@@ -11,31 +11,25 @@ editorOptions = {
 
 
 if (document.body.id == 'page') {
-    const editorContainer = document.getElementById('editor');
-    const language = editorContainer.getAttribute('language')
-    const btnCopy = document.getElementById('btnCopy')
-
     const editor = ace.edit('editor');
+    const editorContainer = document.getElementById('editor');
+    const language = editorContainer.getAttribute('language');
+    const btnCopy = document.getElementById('btnCopy');
 
     editor.setOptions(editorOptions);
     editor.setReadOnly(true);
     editor.setHighlightActiveLine(false);
     editor.setHighlightGutterLine(false);
 
-    // Remove cursor
-    editor.renderer.$cursorLayer.element.style.display = 'none'
-
+    editor.renderer.$cursorLayer.element.style.display = 'none'; // Remove cursor
     editor.session.setMode('ace/mode/' + language);
     editor.session.setUseWorker(false);
+
+    editorContainer.style.visibility = 'visible';
 
     if (language == 'text') {
         editor.setOption('wrap', true)
     }
-
-    editorContainer.style.visibility = 'visible';
-
-    // Save page to history in local storage
-    let history = localStorage.getItem('history');
 
     btnCopy.addEventListener('click', (event) => {
         const sel = editor.selection.toJSON();
@@ -48,54 +42,44 @@ if (document.body.id == 'page') {
 
 
 if (document.body.id == 'index') {
-
-    // Initialise ace editor
     const editor = ace.edit('editor');
+    const editorCounter = document.getElementById('editorCounter');
+    const editorError = document.getElementById('editorError');
+    const textarea = document.getElementsByName('editor')[0];
+    const form = document.getElementById('form');
+    const title = document.getElementById('title');
+    const languageSelector = document.getElementById('languageSelector');
+
     editor.setOptions(editorOptions);
     editor.setReadOnly(false);
 
-    // Add text area for submit code to the serverside
-    const textarea = document.getElementsByName('editor')[0]
-
-    // Restriction on max length for text in ace editor
-    const editorCounter = document.getElementById('editorCounter');
-    const editorError = document.getElementById('editorError');
     const MAX_LENGTH = 16000;
     let currentLength = 0;
-
-    const title = document.getElementById('title');
-    const languageSelector = document.getElementById('languageSelector');
-    const form = document.getElementById('form');
 
     // Check this is /index or /clone page
     const paramsString = document.location.pathname;
     const searchParams = new URLSearchParams(paramsString);
-    let isClonePage = searchParams.get('/clone');
-
+    const isClonePage = searchParams.get('/clone');
 
     // For /clone page doesn't load values from local storage
     if (isClonePage == null) {
-
         // Initialise data from localstorage
         let styleValue = localStorage.getItem('attributeStyle');
 
         if (styleValue) {
             languageSelector.value = styleValue
             editor.session.setMode('ace/mode/' + styleValue);
-
             // Text wrap only for plane text style
             if (styleValue == 'text') {
                 editor.setOption('wrap', true)
             }
-
         } else {
             // Plane text as default style
             languageSelector.value = 'text'
             editor.session.setMode('ace/mode/text');
             editor.setOption('wrap', true)
         }
-    } else {
-        // if page is /Clone
+    } else { // if page is /Clone
         styleValue = languageSelector.value
         editor.session.setMode('ace/mode/' + styleValue);
 
@@ -114,7 +98,6 @@ if (document.body.id == 'index') {
         
         if (styleValue == 'text') {
             editor.setOption('wrap', true)
-
         } else {
             editor.setOption('wrap', false)
         }
